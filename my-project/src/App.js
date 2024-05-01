@@ -1,11 +1,38 @@
+import React,{useState} from "react"
 import ProSideBar from "./components/ProSideBar"
-// import NewProject from "./components/NewProject"
 import NoProSelect from "./components/NoProSelect"
+import NewProject from "./components/NewProject";
+
+
+
 export default function App() {
+  const [ProjectsStat,setProjectsStat] = useState({
+    setProjectsId: undefined,
+    projects : []
+  });
+
+  function handleStartAddPro(){
+    setProjectsStat(prevSate=>{
+      return {
+        ...prevSate,
+        setProjectsId: null
+      }
+    });
+  }
+  
+
+  let content;
+  if(ProjectsStat.setProjectsId=== null){
+   content = <NewProject/>
+  }
+  else if(ProjectsStat.setProjectsId===undefined){
+    content = <NoProSelect/>
+  }
+    
   return (
     <main className="h-screen my-8 flex gap-8 ">
-      <ProSideBar/>
-      <NoProSelect/>
+      <ProSideBar onstartAddProject={handleStartAddPro}/>
+      <NoProSelect onstartAddProject={handleStartAddPro}/>
     </main>
   )
 }
