@@ -1,4 +1,6 @@
 import './index.css'
+import 'tailwindcss/tailwind.css';
+
 import ProSideBar from "./components/ProSideBar";
 function App() {
   return (
