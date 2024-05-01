@@ -26,13 +26,13 @@ export default function App() {
    content = <NewProject/>
   }
   else if(ProjectsStat.setProjectsId===undefined){
-    content = <NoProSelect/>
+    content = <NoProSelect onstartAddProject={handleStartAddPro}/>
   }
     
   return (
     <main className="h-screen my-8 flex gap-8 ">
       <ProSideBar onstartAddProject={handleStartAddPro}/>
-      <NoProSelect onstartAddProject={handleStartAddPro}/>
+    {content}
     </main>
   )
 }
