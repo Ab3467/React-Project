@@ -21,9 +21,23 @@ export default function App() {
   }
   
 
+  function HandleAddProject(projectData){
+    setProjectsStat(prevSate=>{
+      const newPro = {
+        ...projectData,
+          id : Math.random()
+      };
+      return{
+       projects: [...prevSate.projects,newPro]
+      }
+    })
+  }
+
+console.log(setProjectsStat);
+
   let content;
   if(ProjectsStat.setProjectsId=== null){
-   content = <NewProject/>
+   content = <NewProject onAdd={HandleAddProject}/>
   }
   else if(ProjectsStat.setProjectsId===undefined){
     content = <NoProSelect onstartAddProject={handleStartAddPro}/>

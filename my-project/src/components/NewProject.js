@@ -1,7 +1,7 @@
 import React,{useState,useRef} from 'react'
 import Input from '../Input'
 
-export default function NewProject() {
+export default function NewProject({onAdd}) {
 const Title = useRef();
 const Description = useRef();
 const Duedate = useRef();
@@ -12,6 +12,12 @@ function HandleSaveButton(){
  const EnteredTitle = Title.current.value;
  const EnteredDes= Description.current.value;
  const EnteredDueD = Duedate.current.value;
+
+ onAdd({
+   title: EnteredTitle,
+   description: EnteredDes,
+   duedate: EnteredDueD
+ })
 }
 
   return (
