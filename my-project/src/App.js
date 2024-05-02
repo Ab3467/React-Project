@@ -21,6 +21,15 @@ export default function App() {
   }
   
 
+   function handleCancel(){
+    setProjectsStat(prevSate=>{
+      return {
+        ...prevSate,
+        setProjectsId: undefined,
+      }
+    });
+   }
+
   function HandleAddProject(projectData){
     setProjectsStat(prevSate=>{
       const ProId = Math.random();
@@ -39,7 +48,7 @@ export default function App() {
 
   let content;
   if(ProjectsStat.setProjectsId=== null){
-   content = <NewProject onAdd={HandleAddProject}/>
+   content = <NewProject onAdd={HandleAddProject} onCancel={handleCancel}/>
   }
   else if(ProjectsStat.setProjectsId===undefined){
     content = <NoProSelect onstartAddProject={handleStartAddPro}/>
