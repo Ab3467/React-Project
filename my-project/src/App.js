@@ -19,7 +19,18 @@ export default function App() {
       }
     });
   }
-  
+
+
+  function handleSelectProj(id){
+    setProjectsStat(prevSate=>{
+      return {
+        ...prevSate,
+        setProjectsId: id,
+      }
+    });
+  }
+
+
 
    function handleCancel(){
     setProjectsStat(prevSate=>{
@@ -29,6 +40,7 @@ export default function App() {
       }
     });
    }
+
 
   function HandleAddProject(projectData){
     setProjectsStat(prevSate=>{
@@ -56,7 +68,9 @@ export default function App() {
     
   return (
     <main className="h-screen my-8 flex gap-8 ">
-      <ProSideBar onstartAddProject={handleStartAddPro} projects={ProjectsStat.projects}/>
+      <ProSideBar 
+      onSelectProj ={handleSelectProj}
+      onstartAddProject={handleStartAddPro} projects={ProjectsStat.projects}/>
     {content}
     </main>
   )
