@@ -43,6 +43,18 @@ export default function App() {
    }
 
 
+
+   function handleDelete(){
+    setProjectsStat(prevSate=>{
+      return {
+        ...prevSate,
+        setProjectsId: undefined,
+        projects: prevSate.projects.filter((project)=> project.id !== prevSate.setProjectsId),
+      };
+    });
+   }
+
+
   function HandleAddProject(projectData){
     setProjectsStat(prevSate=>{
       const ProId = Math.random();
@@ -60,8 +72,8 @@ export default function App() {
 
   const selectedproject = ProjectsStat.projects.find(project=> project.id === ProjectsStat.setProjectsId)
 
-  let content= <SelectedPro project={selectedproject}/>;
-  
+  let content= <SelectedPro project={selectedproject} onDelete={handleDelete}/>;
+
   if(ProjectsStat.setProjectsId=== null){
    content = <NewProject onAdd={HandleAddProject} onCancel={handleCancel}/>
   }

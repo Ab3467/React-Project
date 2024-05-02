@@ -24,7 +24,7 @@ export default function ProSideBar({onstartAddProject,projects,onSelectProj,sele
 
          return(
          <li key={project.id}>
-          <button onClick={onSelectProj} className={cssClasses}>{project.title}</button>
+          <button onClick={()=>onSelectProj(project.id)} className={cssClasses}>{project.title}</button>
          </li>
          );
        })}
