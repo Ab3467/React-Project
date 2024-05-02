@@ -1,5 +1,6 @@
 import React,{useRef} from 'react'
 import Input from '../Input'
+import Modal from './Modal';
 
 export default function NewProject({onAdd}) {
 const Title = useRef();
@@ -18,7 +19,7 @@ function HandleSaveButton(){
     EnteredDes.trim() ==='' || 
     EnteredDueD.trim() ===''
     ){
-      
+
     }
 
  onAdd({
@@ -30,6 +31,7 @@ function HandleSaveButton(){
 
   return (
     <>
+    <Modal/>
     <div className='w-[35rem] mt-16'>
         <menu className='flex items-center justify-end gap-4 my-4'>
             <li><button className='text-stone-800 hover:text-stone-950'>Cancel</button></li>
