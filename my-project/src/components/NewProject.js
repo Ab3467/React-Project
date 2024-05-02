@@ -13,6 +13,14 @@ function HandleSaveButton(){
  const EnteredDes= Description.current.value;
  const EnteredDueD = Duedate.current.value;
 
+ if(
+    EnteredTitle.trim() === '' || 
+    EnteredDes.trim() ==='' || 
+    EnteredDueD.trim() ===''
+    ){
+      
+    }
+
  onAdd({
    title: EnteredTitle,
    description: EnteredDes,
