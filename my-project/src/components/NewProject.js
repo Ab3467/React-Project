@@ -3,6 +3,8 @@ import Input from '../Input'
 import Modal from './Modal';
 
 export default function NewProject({onAdd}) {
+
+const modal = useRef();
 const Title = useRef();
 const Description = useRef();
 const Duedate = useRef();
@@ -19,7 +21,7 @@ function HandleSaveButton(){
     EnteredDes.trim() ==='' || 
     EnteredDueD.trim() ===''
     ){
-
+      modal.current.open();
     }
 
  onAdd({
@@ -31,7 +33,7 @@ function HandleSaveButton(){
 
   return (
     <>
-    <Modal/>
+    <Modal ref={modal}/>
     <div className='w-[35rem] mt-16'>
         <menu className='flex items-center justify-end gap-4 my-4'>
             <li><button className='text-stone-800 hover:text-stone-950'>Cancel</button></li>
