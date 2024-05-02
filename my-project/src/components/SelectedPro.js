@@ -1,4 +1,5 @@
 import React from 'react'
+import Tasks from './Tasks'
 
 export default function SelectedPro({project,onDelete}) {
 
@@ -19,7 +20,7 @@ export default function SelectedPro({project,onDelete}) {
             <p className='mb-4 text-stone-400'>{formatDate}</p>
             <p className='text-stone-600 whitespace-pre-wrap'>{project.description}</p>
         </header>
-        TASKS
+        <Tasks/>
     </div>
   )
 }
