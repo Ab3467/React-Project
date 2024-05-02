@@ -23,17 +23,19 @@ export default function App() {
 
   function HandleAddProject(projectData){
     setProjectsStat(prevSate=>{
+      const ProId = Math.random();
       const newPro = {
         ...projectData,
-          id : Math.random()
+          id : ProId, 
       };
       return{
-       projects: [...prevSate.projects,newPro]
+      setProjectsId: undefined,
+      projects: [...prevSate.projects,newPro]
       }
     })
   }
 
-console.log(setProjectsStat);
+
 
   let content;
   if(ProjectsStat.setProjectsId=== null){
@@ -45,7 +47,7 @@ console.log(setProjectsStat);
     
   return (
     <main className="h-screen my-8 flex gap-8 ">
-      <ProSideBar onstartAddProject={handleStartAddPro}/>
+      <ProSideBar onstartAddProject={handleStartAddPro} projects={ProjectsStat.projects}/>
     {content}
     </main>
   )

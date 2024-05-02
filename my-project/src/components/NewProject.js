@@ -28,9 +28,9 @@ function HandleSaveButton(){
             <li><button onClick={HandleSaveButton} className='px-6 py-2 rounded-md bg-stone-800 text-stone-50 hover:bg-stone-950'>Save</button> </li>
         </menu> 
         <div>
-            <Input ref={Title} label={"Title"}/>
+            <Input type="text" ref={Title} label={"Title"}/>
             <Input ref={Description} label={"Description"} textarea/>
-            <Input ref={Duedate} label={"Due Date"}/>
+            <Input type="date" ref={Duedate} label={"Due Date"}/>
         </div>
     </div>
     </>
