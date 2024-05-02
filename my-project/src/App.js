@@ -2,6 +2,7 @@ import React,{useState} from "react"
 import ProSideBar from "./components/ProSideBar"
 import NoProSelect from "./components/NoProSelect"
 import NewProject from "./components/NewProject";
+import SelectedPro from "./components/SelectedPro";
 
 
 
@@ -57,8 +58,10 @@ export default function App() {
   }
 
 
+  const selectedproject = ProjectsStat.projects.find(project=> project.id === ProjectsStat.setProjectsId)
 
-  let content;
+  let content= <SelectedPro project={selectedproject}/>;
+  
   if(ProjectsStat.setProjectsId=== null){
    content = <NewProject onAdd={HandleAddProject} onCancel={handleCancel}/>
   }
