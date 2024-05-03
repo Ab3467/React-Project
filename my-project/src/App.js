@@ -31,7 +31,13 @@ export default function App() {
 
    
    function handleDeleteTask(){
-
+    setProjectsStat(prevSate=>{
+      return {
+        ...prevSate,
+        setProjectsId: undefined,
+        projects: prevSate.projects.filter((project)=> project.id !== prevSate.setProjectsId),
+      };
+    });
    } 
 
 
