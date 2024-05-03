@@ -7,11 +7,12 @@ import SelectedPro from "./components/SelectedPro";
 
 
 export default function App() {
-  const [ProjectsStat,setProjectsStat] = useState({
+  const [ProjectsStat, setProjectsStat] = useState({
     setProjectsId: undefined,
-    projects : [],
-    tasks : [],
+    projects: [],
+    tasks: [], // Provide a default empty array for tasks
   });
+  
 
 
    function handleAddTask(text){
@@ -30,14 +31,18 @@ export default function App() {
    }
 
    
-   function handleDeleteTask(id){
-    setProjectsStat(prevSate=>{
+   function handleDeleteTask(id) {
+    setProjectsStat(prevState => {
+      // Ensure prevState.tasks is initialized as an array
+      const tasksArray = Array.isArray(prevState.tasks) ? prevState.tasks : [];
+      
       return {
-        ...prevSate,
-        tasks: prevSate.tasks.filter((tasks)=> tasks.id !== id),
+        ...prevState,
+        tasks: tasksArray.filter(task => task.id !== id),
       };
     });
-   } 
+  }
+  
 
 
   function handleStartAddPro(){
