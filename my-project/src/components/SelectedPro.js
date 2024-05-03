@@ -4,11 +4,13 @@ import Tasks from './Tasks'
 export default function SelectedPro({project,onDelete,onAddTask,onDeleteTask,tasks}) {
 
 
-    const formatDate = new Date(project.DueDate).toLocaleDateString('en-US',{
+    const formatDate = new Date(project.duedate).toLocaleDateString('en-US',{
         year:'numeric',
         month:'short',
         day:'numeric',
     })
+    
+    
   return (
     <div className='w-[35rem] mt-16'>
         <header className='pb-4 mb-4 border-b-2 border-stone-300'>

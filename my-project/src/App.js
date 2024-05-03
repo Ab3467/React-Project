@@ -14,36 +14,32 @@ export default function App() {
   });
   
 
-
-   function handleAddTask(text){
-    setProjectsStat(prevSate=>{
+  function handleAddTask(text){
+    setProjectsStat(prevState => {
       const TaskId = Math.random();
       const newTask = {
           text: text,
-          ProId: prevSate.setProjectsId,
+          ProId: prevState.setProjectsId,
           id : TaskId, 
       };
       return{
-      ...prevSate,
-      tasks: [newTask, ...prevSate.tasks]
+      ...prevState,
+      tasks: [newTask, ...prevState.tasks]
       }
     })
    }
 
    
-   function handleDeleteTask(id) {
+   function handleDeleteTask(id){
     setProjectsStat(prevState => {
-      // Ensure prevState.tasks is initialized as an array
-      const tasksArray = prevState.tasks || [];
-      
       return {
         ...prevState,
-        tasks: tasksArray.filter(task => task.id !== id),
+        tasks: prevState.tasks.filter((task)=> task.id !== id),
       };
     });
-  }
-  
-  
+   } 
+
+
   
 
 
@@ -120,7 +116,7 @@ export default function App() {
     <main className="h-screen my-8 flex gap-8 ">
       <ProSideBar 
       onSelectProj ={handleSelectProj}
-      onstartAddProject={handleStartAddPro} projects={ProjectsStat.projects} selectedProId={project.selectedProId}/>
+      onstartAddProject={handleStartAddPro} projects={ProjectsStat.projects} selectedProId={ProjectsStat.selectedProId}/>
     {content}
     </main>
   )

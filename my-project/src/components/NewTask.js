@@ -9,6 +9,9 @@ function handleChange(event){
 
 
 function handleClick(){
+  if(enteredTask.trim() === ''){
+    return;
+  }
   onAdd(enteredTask)
   setenteredtask('');
 }
