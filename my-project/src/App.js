@@ -34,8 +34,7 @@ export default function App() {
     setProjectsStat(prevSate=>{
       return {
         ...prevSate,
-        setProjectsId: undefined,
-        tasks: prevSate.tasks.filter((project)=> tasks.id !== id),
+        tasks: prevSate.tasks.filter((tasks)=> tasks.id !== id),
       };
     });
    } 
