@@ -3,7 +3,7 @@ import Button from './Button'
 import Image from "../assets/Noimage.png"
 
 
-export default function NoProSelect({onstartAddProject}) {
+export default function NoProSelect({onstartAddProject,selectedProId}) {
   return (
     <div className='mt-24 text-center w-2/3'>
       <img

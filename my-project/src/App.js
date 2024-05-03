@@ -34,7 +34,7 @@ export default function App() {
    function handleDeleteTask(id) {
     setProjectsStat(prevState => {
       // Ensure prevState.tasks is initialized as an array
-      const tasksArray = Array.isArray(prevState.tasks) ? prevState.tasks : [];
+      const tasksArray = prevState.tasks || [];
       
       return {
         ...prevState,
@@ -42,6 +42,8 @@ export default function App() {
       };
     });
   }
+  
+  
   
 
 
@@ -118,7 +120,7 @@ export default function App() {
     <main className="h-screen my-8 flex gap-8 ">
       <ProSideBar 
       onSelectProj ={handleSelectProj}
-      onstartAddProject={handleStartAddPro} projects={ProjectsStat.projects}/>
+      onstartAddProject={handleStartAddPro} projects={ProjectsStat.projects} selectedProId={project.selectedProId}/>
     {content}
     </main>
   )
