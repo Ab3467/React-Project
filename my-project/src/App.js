@@ -9,8 +9,31 @@ import SelectedPro from "./components/SelectedPro";
 export default function App() {
   const [ProjectsStat,setProjectsStat] = useState({
     setProjectsId: undefined,
-    projects : []
+    projects : [],
+    tasks : [],
   });
+
+
+   function handleAddTask(text){
+    setProjectsStat(prevSate=>{
+      const TaskId = Math.random();
+      const newTask = {
+          text: text,
+          ProId: prevSate.setProjectsId,
+          id : TaskId, 
+      };
+      return{
+      ...prevSate,
+      tasks: [newTask, ...prevSate.tasks]
+      }
+    })
+   }
+
+   
+   function handleDeleteTask(){
+
+   } 
+
 
   function handleStartAddPro(){
     setProjectsStat(prevSate=>{
@@ -72,7 +95,7 @@ export default function App() {
 
   const selectedproject = ProjectsStat.projects.find(project=> project.id === ProjectsStat.setProjectsId)
 
-  let content= <SelectedPro project={selectedproject} onDelete={handleDelete}/>;
+  let content= <SelectedPro project={selectedproject} onDelete={handleDelete} onAddTask={handleAddTask} onDeleteTask={handleDeleteTask} tasks={ProjectsStat.tasks}/>;
 
   if(ProjectsStat.setProjectsId=== null){
    content = <NewProject onAdd={HandleAddProject} onCancel={handleCancel}/>

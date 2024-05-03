@@ -1,7 +1,7 @@
 import React from 'react'
 import Tasks from './Tasks'
 
-export default function SelectedPro({project,onDelete}) {
+export default function SelectedPro({project,onDelete,onAddTask,onDeleteTask,tasks}) {
 
 
     const formatDate = new Date(project.DueDate).toLocaleDateString('en-US',{
@@ -20,7 +20,7 @@ export default function SelectedPro({project,onDelete}) {
             <p className='mb-4 text-stone-400'>{formatDate}</p>
             <p className='text-stone-600 whitespace-pre-wrap'>{project.description}</p>
         </header>
-        <Tasks/>
+        <Tasks onAdd={onAddTask} onDelete={onDeleteTask} tasks={tasks}/>
     </div>
   )
 }
