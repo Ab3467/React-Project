@@ -20,7 +20,8 @@ export default function SelectedPro({project,onDelete,onAddTask,onDeleteTask,tas
             <p className='mb-4 text-stone-400'>{formatDate}</p>
             <p className='text-stone-600 whitespace-pre-wrap'>{project.description}</p>
         </header>
-        <Tasks onAdd={onAddTask} onDelete={onDeleteTask} tasks={tasks}/>
+        <Tasks onAdd={onAddTask} onDelete={onDeleteTask} tasks={tasks} />
+
     </div>
   )
 }
