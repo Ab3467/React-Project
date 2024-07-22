@@ -14,13 +14,13 @@ export default function App() {
   });
   
   
-  useEffect(() => {
-    console.log("Hello");
-  }, [])
+  // useEffect(() => {
+  //   console.log("Hello");
+  // }, [])
   
 
   function handleAddTask(text){
-    setProjectsStat(prevState => {
+    setProjectsStat((prevState) => {
       const TaskId = Math.random();
       const newTask = {
           text: text,
@@ -29,7 +29,7 @@ export default function App() {
       };
       return{
       ...prevState,
-      tasks: [newTask, ...prevState.tasks]
+      tasks: [newTask, ...prevState.tasks || []]
       }
     })
    }
