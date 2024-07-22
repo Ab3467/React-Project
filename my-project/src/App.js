@@ -1,4 +1,4 @@
-import React,{useState} from "react"
+import React,{useState,useEffect} from "react"
 import ProSideBar from "./components/ProSideBar"
 import NoProSelect from "./components/NoProSelect"
 import NewProject from "./components/NewProject";
@@ -12,6 +12,11 @@ export default function App() {
     projects: [],
     tasks: [], // Provide a default empty array for tasks
   });
+  
+  
+  useEffect(() => {
+    console.log("Hello");
+  }, [])
   
 
   function handleAddTask(text){
