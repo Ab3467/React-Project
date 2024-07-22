@@ -35,8 +35,6 @@ export default function App() {
     });
   }
 
-  ///Yeah this a react project
-
   function handleStartAddPro() {
     setProjectsStat((prevSate) => {
       return {
