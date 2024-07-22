@@ -8,7 +8,7 @@ export default function NewProject({ onAdd, onCancel }) {
   const Description = useRef();
   const Duedate = useRef();
 
-  function HandleSaveButton() {
+  function handleSaveButton() {
     const EnteredTitle = Title.current.value;
     const EnteredDes = Description.current.value;
     const EnteredDueD = Duedate.current.value;
@@ -53,7 +53,7 @@ export default function NewProject({ onAdd, onCancel }) {
           </li>
           <li>
             <button
-              onClick={HandleSaveButton}
+              onClick={handleSaveButton}
               className="px-6 py-2 rounded-md bg-stone-800 text-stone-50 hover:bg-stone-950"
             >
               Save

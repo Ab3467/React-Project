@@ -76,7 +76,7 @@ export default function App() {
     });
   }
 
-  function HandleAddProject(projectData) {
+  function handleAddProject(projectData) {
     setProjectsStat((prevSate) => {
       const ProId = Math.random();
       const newPro = {
@@ -105,7 +105,7 @@ export default function App() {
   );
 
   if (ProjectsStat.setProjectsId === null) {
-    content = <NewProject onAdd={HandleAddProject} onCancel={handleCancel} />;
+    content = <NewProject onAdd={handleAddProject} onCancel={handleCancel} />;
   } else if (ProjectsStat.setProjectsId === undefined) {
     content = <NoProSelect onstartAddProject={handleStartAddPro} />;
   }
