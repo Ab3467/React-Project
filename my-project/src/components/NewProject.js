@@ -3,10 +3,10 @@ import Input from "../Input";
 import Modal from "./Modal";
 
 export default function NewProject({ onAdd, onCancel }) {
-  const modal = useRef();
-  const Title = useRef();
-  const Description = useRef();
-  const Duedate = useRef();
+  const modal = useRef(null);
+  const Title = useRef(null);
+  const Description = useRef(null);
+  const Duedate = useRef(null);
 
   function handleSaveButton(e) {
     e.preventDefault();
@@ -29,7 +29,7 @@ export default function NewProject({ onAdd, onCancel }) {
       duedate: EnteredDueD,
     });
 
-    // Clear the input fields after adding the project
+    // Clear input fields
     Title.current.value = "";
     Description.current.value = "";
     Duedate.current.value = "";
@@ -53,13 +53,14 @@ export default function NewProject({ onAdd, onCancel }) {
             <button
               className="text-stone-800 hover:text-stone-950"
               onClick={onCancel}
+              type="button" // Ensure button does not submit the form
             >
               Cancel
             </button>
           </li>
           <li>
             <button
-            type="submit"
+              type="submit" // Ensure button submits the form
               className="px-6 py-2 rounded-md bg-stone-800 text-stone-50 hover:bg-stone-950"
             >
               Save
