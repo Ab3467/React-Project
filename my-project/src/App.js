@@ -19,6 +19,9 @@ export default function App() {
         ProId: prevState.setProjectsId,
         id: TaskId,
       };
+      if(newTask.length <= 0){
+       alert("please enter task first")
+      }
       return {
         ...prevState,
         tasks: [newTask, ...(prevState.tasks || [])],
