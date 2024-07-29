@@ -59,6 +59,7 @@ export default function NewProject({ onAdd, onCancel }) {
           </li>
           <li>
             <button
+            type="submit"
               className="px-6 py-2 rounded-md bg-stone-800 text-stone-50 hover:bg-stone-950"
             >
               Save

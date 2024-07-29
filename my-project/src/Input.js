@@ -1,8 +1,4 @@
-import React from "react";
-import { forwardRef } from "react";
-
-const classes =
-  "w-full p-1 border-b-2 rounded-sm border-stone-300 bg-stone-300 text-stone-600 focus:outline-none focus:border-stone-600";
+import React, { forwardRef } from 'react';
 
 const Input = forwardRef(function Input({ label, textarea, ...props }, ref) {
   return (
@@ -11,11 +7,12 @@ const Input = forwardRef(function Input({ label, textarea, ...props }, ref) {
         {label}
       </label>
       {textarea ? (
-        <textarea ref={ref} className={classes} {...props} />
+        <textarea ref={ref} className="w-full p-1 border-b-2 rounded-sm border-stone-300 bg-stone-300 text-stone-600 focus:outline-none focus:border-stone-600" {...props} />
       ) : (
-        <input ref={ref} className={classes} {...props} />
+        <input ref={ref} className="w-full p-1 border-b-2 rounded-sm border-stone-300 bg-stone-300 text-stone-600 focus:outline-none focus:border-stone-600" {...props} />
       )}
     </p>
   );
 });
+
 export default Input;
