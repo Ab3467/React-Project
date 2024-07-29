@@ -3,11 +3,8 @@ import React, { useState } from "react";
 export default function NewTask({ onAdd }) {
   const [enteredTask, setenteredtask] = useState("");
 
-  function handleChange(event) {
-    setenteredtask(event.target.value);
-  }
-
-  function handleClick() {
+ 
+ function handleSubmit() {
     if (enteredTask.trim() === "") {
       return;
     }
@@ -16,7 +13,7 @@ export default function NewTask({ onAdd }) {
   }
 
   return (
-    <div className="flex item-center gap-4">
+    <form className="flex item-center gap-4" onSubmit={handleSubmit}>
       <input
         type="text"
         className="w-64 px-2 py-1 rounded-sm bg-stone-200"
@@ -24,11 +21,11 @@ export default function NewTask({ onAdd }) {
         value={enteredTask}
       />
       <button
-        onClick={handleClick}
         className="text-stone-700 hover:text-stone-950"
+        type="submit"
       >
         Add task
       </button>
-    </div>
+    </form>
   );
 }
