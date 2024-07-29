@@ -1,23 +1,22 @@
 import React, { useState } from "react";
 
 export default function NewTask({ onAdd }) {
-  const [enteredTask, setenteredtask] = useState("");
+  const [enteredTask, setEnteredTask] = useState("");
 
  
- function handleSubmit() {
-    if (enteredTask.trim() === "") {
-      return;
-    }
+  function handleSubmit(e) {
+    e.preventDefault();
     onAdd(enteredTask);
-    setenteredtask("");
+    setEnteredTask("");
   }
+
 
   return (
     <form className="flex item-center gap-4" onSubmit={handleSubmit}>
       <input
         type="text"
         className="w-64 px-2 py-1 rounded-sm bg-stone-200"
-        onChange={handleChange}
+        onChange={(e)=> setEnteredTask(e.target.value)}
         value={enteredTask}
       />
       <button
