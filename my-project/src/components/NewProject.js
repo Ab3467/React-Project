@@ -8,7 +8,8 @@ export default function NewProject({ onAdd, onCancel }) {
   const Description = useRef();
   const Duedate = useRef();
 
-  function handleSaveButton() {
+  function handleSaveButton(e) {
+    e.preventDefault();
     const EnteredTitle = Title.current.value;
     const EnteredDes = Description.current.value;
     const EnteredDueD = Duedate.current.value;
@@ -27,6 +28,11 @@ export default function NewProject({ onAdd, onCancel }) {
       description: EnteredDes,
       duedate: EnteredDueD,
     });
+
+    // Clear the input fields after adding the project
+    Title.current.value = "";
+    Description.current.value = "";
+    Duedate.current.value = "";
   }
 
   return (
@@ -37,11 +43,11 @@ export default function NewProject({ onAdd, onCancel }) {
           OOPs... Looks like you forget to enter a value
         </p>
         <p className="text-stone-600 mb-4">
-          Please Make sure you provided a valid value for every input field
+          Please make sure you provided a valid value for every input field
         </p>
       </Modal>
 
-      <div className="w-[35rem] mt-16">
+      <form className="w-[35rem] mt-16" onSubmit={handleSaveButton}>
         <menu className="flex items-center justify-end gap-4 my-4">
           <li>
             <button
@@ -53,11 +59,10 @@ export default function NewProject({ onAdd, onCancel }) {
           </li>
           <li>
             <button
-              onClick={handleSaveButton}
               className="px-6 py-2 rounded-md bg-stone-800 text-stone-50 hover:bg-stone-950"
             >
               Save
-            </button>{" "}
+            </button>
           </li>
         </menu>
         <div>
@@ -65,7 +70,7 @@ export default function NewProject({ onAdd, onCancel }) {
           <Input ref={Description} label={"Description"} textarea />
           <Input type="date" ref={Duedate} label={"Due Date"} />
         </div>
-      </div>
+      </form>
     </>
   );
 }
