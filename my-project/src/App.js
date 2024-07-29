@@ -8,7 +8,7 @@ export default function App() {
   const [projectState, setProjectState] = useState({
     setProjectsId: undefined,
     projects: [],
-    tasks: [], // Provide a default empty array for tasks
+    tasks: [], 
   });
 
   function handleAddTask(text) {
