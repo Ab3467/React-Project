@@ -5,32 +5,36 @@ import NewProject from "./components/NewProject";
 import SelectedPro from "./components/SelectedPro";
 
 export default function App() {
-  const [projectState, setprojectState] = useState({
+  const [projectState, setProjectState] = useState({
     setProjectsId: undefined,
     projects: [],
     tasks: [], // Provide a default empty array for tasks
   });
 
   function handleAddTask(text) {
-    setprojectState((prevState) => {
+    if (text.trim().length <= 0) {
+      alert("Please enter a task first");
+      return;
+    }
+  
+    setProjectState((prevState) => {
       const TaskId = Math.random();
       const newTask = {
         text: text,
         ProId: prevState.setProjectsId,
         id: TaskId,
       };
-      if(newTask.length <= 0){
-       alert("please enter task first")
-      }
+  
       return {
         ...prevState,
         tasks: [newTask, ...(prevState.tasks || [])],
       };
     });
   }
+  
 
   function handleDeleteTask(id) {
-    setprojectState((prevState) => {
+    setProjectState((prevState) => {
       return {
         ...prevState,
         tasks: prevState.tasks.filter((task) => task.id !== id),
@@ -39,7 +43,7 @@ export default function App() {
   }
 
   function handleStartAddPro() {
-    setprojectState((prevSate) => {
+    setProjectState((prevSate) => {
       return {
         ...prevSate,
         setProjectsId: null,
@@ -48,7 +52,7 @@ export default function App() {
   }
 
   function handleSelectProj(id) {
-    setprojectState((prevSate) => {
+    setProjectState((prevSate) => {
       return {
         ...prevSate,
         setProjectsId: id,
@@ -57,7 +61,7 @@ export default function App() {
   }
 
   function handleCancel() {
-    setprojectState((prevSate) => {
+    setProjectState((prevSate) => {
       return {
         ...prevSate,
         setProjectsId: undefined,
@@ -66,7 +70,7 @@ export default function App() {
   }
 
   function handleDelete() {
-    setprojectState((prevSate) => {
+    setProjectState((prevSate) => {
       return {
         ...prevSate,
         setProjectsId: undefined,
@@ -78,7 +82,7 @@ export default function App() {
   }
 
   function handleAddProject(projectData) {
-    setprojectState((prevSate) => {
+    setProjectState((prevSate) => {
       const ProId = Math.random();
       const newPro = {
         ...projectData,
