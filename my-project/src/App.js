@@ -5,14 +5,14 @@ import NewProject from "./components/NewProject";
 import SelectedPro from "./components/SelectedPro";
 
 export default function App() {
-  const [ProjectsStat, setProjectsStat] = useState({
+  const [projectState, setprojectState] = useState({
     setProjectsId: undefined,
     projects: [],
     tasks: [], // Provide a default empty array for tasks
   });
 
   function handleAddTask(text) {
-    setProjectsStat((prevState) => {
+    setprojectState((prevState) => {
       const TaskId = Math.random();
       const newTask = {
         text: text,
@@ -27,7 +27,7 @@ export default function App() {
   }
 
   function handleDeleteTask(id) {
-    setProjectsStat((prevState) => {
+    setprojectState((prevState) => {
       return {
         ...prevState,
         tasks: prevState.tasks.filter((task) => task.id !== id),
@@ -36,7 +36,7 @@ export default function App() {
   }
 
   function handleStartAddPro() {
-    setProjectsStat((prevSate) => {
+    setprojectState((prevSate) => {
       return {
         ...prevSate,
         setProjectsId: null,
@@ -45,7 +45,7 @@ export default function App() {
   }
 
   function handleSelectProj(id) {
-    setProjectsStat((prevSate) => {
+    setprojectState((prevSate) => {
       return {
         ...prevSate,
         setProjectsId: id,
@@ -54,7 +54,7 @@ export default function App() {
   }
 
   function handleCancel() {
-    setProjectsStat((prevSate) => {
+    setprojectState((prevSate) => {
       return {
         ...prevSate,
         setProjectsId: undefined,
@@ -63,7 +63,7 @@ export default function App() {
   }
 
   function handleDelete() {
-    setProjectsStat((prevSate) => {
+    setprojectState((prevSate) => {
       return {
         ...prevSate,
         setProjectsId: undefined,
@@ -75,7 +75,7 @@ export default function App() {
   }
 
   function handleAddProject(projectData) {
-    setProjectsStat((prevSate) => {
+    setprojectState((prevSate) => {
       const ProId = Math.random();
       const newPro = {
         ...projectData,
@@ -88,8 +88,8 @@ export default function App() {
     });
   }
 
-  const selectedproject = ProjectsStat.projects.find(
-    (project) => project.id === ProjectsStat.setProjectsId
+  const selectedproject = projectState.projects.find(
+    (project) => project.id === projectState.setProjectsId
   );
 
   let content = (
@@ -98,13 +98,13 @@ export default function App() {
       onDelete={handleDelete}
       onAddTask={handleAddTask}
       onDeleteTask={handleDeleteTask}
-      tasks={ProjectsStat.tasks}
+      tasks={projectState.tasks}
     />
   );
 
-  if (ProjectsStat.setProjectsId === null) {
+  if (projectState.setProjectsId === null) {
     content = <NewProject onAdd={handleAddProject} onCancel={handleCancel} />;
-  } else if (ProjectsStat.setProjectsId === undefined) {
+  } else if (projectState.setProjectsId === undefined) {
     content = <NoProSelect onstartAddProject={handleStartAddPro} />;
   }
 
@@ -113,8 +113,8 @@ export default function App() {
       <ProSideBar
         onSelectProj={handleSelectProj}
         onstartAddProject={handleStartAddPro}
-        projects={ProjectsStat.projects}
-        selectedProId={ProjectsStat.selectedProId}
+        projects={projectState.projects}
+        selectedProId={projectState.selectedProId}
       />
       {content}
     </main>
