@@ -2,7 +2,7 @@ import React from "react";
 import Button from "./Button";
 import Image from "../assets/Noimage.png";
 
-export default function NoProSelect({ onstartAddProject, selectedProId }) {
+export default function NoProSelect({ onstartAddProject }) {
   return (
     <div className="mt-24 text-center w-2/3">
       <img
