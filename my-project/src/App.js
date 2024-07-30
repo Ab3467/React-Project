@@ -8,7 +8,7 @@ export default function App() {
   const [projectState, setProjectState] = useState({
     setProjectsId: undefined,
     projects: [],
-    tasks: [], 
+    tasks: [],
   });
 
   function handleAddTask(text) {
@@ -16,7 +16,7 @@ export default function App() {
       alert("Please enter a task first");
       return;
     }
-  
+
     setProjectState((prevState) => {
       const TaskId = Math.random();
       const newTask = {
@@ -24,104 +24,96 @@ export default function App() {
         ProId: prevState.setProjectsId,
         id: TaskId,
       };
-  
+
       return {
         ...prevState,
         tasks: [newTask, ...(prevState.tasks || [])],
       };
     });
   }
-  
 
   function handleDeleteTask(id) {
-    setProjectState((prevState) => {
-      return {
-        ...prevState,
-        tasks: prevState.tasks.filter((task) => task.id !== id),
-      };
-    });
+    setProjectState((prevState) => ({
+      ...prevState,
+      tasks: prevState.tasks.filter((task) => task.id !== id),
+    }));
   }
 
   function handleStartAddPro() {
-    setProjectState((prevSate) => {
-      return {
-        ...prevSate,
-        setProjectsId: null,
-      };
-    });
+    setProjectState((prevState) => ({
+      ...prevState,
+      setProjectsId: null, // Change this to undefined if necessary
+    }));
   }
 
   function handleSelectProj(id) {
-    setProjectState((prevSate) => {
-      return {
-        ...prevSate,
-        setProjectsId: id,
-      };
-    });
+    setProjectState((prevState) => ({
+      ...prevState,
+      setProjectsId: id,
+    }));
   }
 
   function handleCancel() {
-    setProjectState((prevSate) => {
-      return {
-        ...prevSate,
-        setProjectsId: undefined,
-      };
-    });
+    setProjectState((prevState) => ({
+      ...prevState,
+      setProjectsId: undefined,
+    }));
   }
 
   function handleDelete() {
-    setProjectState((prevSate) => {
-      return {
-        ...prevSate,
-        setProjectsId: undefined,
-        projects: prevSate.projects.filter(
-          (project) => project.id !== prevSate.setProjectsId
-        ),
-      };
-    });
+    setProjectState((prevState) => ({
+      ...prevState,
+      setProjectsId: undefined,
+      projects: prevState.projects.filter(
+        (project) => project.id !== prevState.setProjectsId
+      ),
+    }));
   }
 
   function handleAddProject(projectData) {
-    setProjectState((prevSate) => {
+    setProjectState((prevState) => {
       const ProId = Math.random();
       const newPro = {
         ...projectData,
         id: ProId,
       };
       return {
+        ...prevState,
         setProjectsId: undefined,
-        projects: [...prevSate.projects, newPro],
+        projects: [...prevState.projects, newPro],
       };
     });
   }
 
-  const selectedproject = projectState.projects.find(
+  const selectedProject = projectState.projects.find(
     (project) => project.id === projectState.setProjectsId
   );
 
-  let content = (
-    <SelectedPro
-      project={selectedproject}
-      onDelete={handleDelete}
-      onAddTask={handleAddTask}
-      onDeleteTask={handleDeleteTask}
-      tasks={projectState.tasks}
-    />
-  );
+  let content;
 
   if (projectState.setProjectsId === null) {
     content = <NewProject onAdd={handleAddProject} onCancel={handleCancel} />;
   } else if (projectState.setProjectsId === undefined) {
     content = <NoProSelect onstartAddProject={handleStartAddPro} />;
+  } else {
+    content = (
+      <SelectedPro
+        project={selectedProject}
+        onDelete={handleDelete}
+        onAddTask={handleAddTask}
+        onDeleteTask={handleDeleteTask}
+        tasks={projectState.tasks}
+      />
+    );
   }
 
   return (
-    <main className="h-screen my-8 flex gap-8 ">
+    <main className="h-screen my-8 flex gap-8">
       <ProSideBar
         onSelectProj={handleSelectProj}
         onstartAddProject={handleStartAddPro}
         projects={projectState.projects}
-        selectedProId={projectState.selectedProId}
+        selectedProId={projectState.setProjectsId}
       />
       {content}
     </main>
